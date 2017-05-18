@@ -12,7 +12,7 @@ RUN apt-get update && \
 WORKDIR /home/isobuilder
 
 ENV YOURS_HOME "/home/isobuilder/"
-ENV APP_DIR "${YOURS_HOME}/app"
+ENV APP_DIR "${YOURS_HOME}/www"
 ENV INITIAL_SRC_DIR "${YOURS_HOME}/src"
 
 # Make sure critical directories exist
