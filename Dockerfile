@@ -36,4 +36,4 @@ ONBUILD ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 # containers being stopped
 # NOTE: It looks like we are leaving some zombie processes when running as PID 1
 # Switch back to this when zombie processes are figured out
-ENTRYPOINT ["node", "--max-old-space-size=2048", "/home/node/www/index.js"]
+ENTRYPOINT ["node", "--max-old-space-size=2048", "/home/node/www/app/index.js"]
