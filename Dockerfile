@@ -6,14 +6,13 @@ RUN mkdir -p /home/isobuilder
 # Install git, curl, node
 RUN apt-get update && \
 	apt-get install -y curl build-essential && \
-	(curl https://deb.nodesource.com/setup_4.x | bash) && \
+	(curl https://deb.nodesource.com/setup_7.x | bash) && \
 	apt-get install -y nodejs
 
 WORKDIR /home/isobuilder
 
-ENV YOURS_HOME "/home/isobuilder"
-ENV APP_DIR "${YOURS_HOME}/www"
-ENV SRC_DIR "${YOURS_HOME}/new-src"
+ENV YOURS_HOME "/home/isobuilder/"
+ENV APP_DIR "${YOURS_HOME}/app"
 ENV INITIAL_SRC_DIR "${YOURS_HOME}/src"
 
 # Make sure critical directories exist
@@ -25,6 +24,10 @@ RUN mkdir -p $INITIAL_SRC_DIR
 COPY cleanup.sh /usr/bin/cleanup.sh
 RUN chmod +x /usr/bin/cleanup.sh
 
+## Add script to build the app once it is added
+COPY build-app.sh /usr/bin/build-app.sh
+RUN chmod +x /usr/bin/build-app.sh
+
 # Allow these to be overridden by children but set defaults
 ONBUILD ENV ROOT_URL http://127.0.0.1
 ONBUILD ENV NODE_TLS_REJECT_UNAUTHORIZED 0
@@ -34,4 +37,4 @@ ONBUILD ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 # containers being stopped
 # NOTE: It looks like we are leaving some zombie processes when running as PID 1
 # Switch back to this when zombie processes are figured out
-ENTRYPOINT ["node", "--max-old-space-size=2048", "/home/meteor/www/bundle/main.js"]
+ENTRYPOINT ["node", "--max-old-space-size=2048", "/home/isobuilder/www/index.js"]
