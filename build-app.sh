@@ -6,8 +6,6 @@
 # https://github.com/abernix/meteord/blob/1d9047539e1bd487d0eff2aa5c994b5472e5b9aa/base/scripts/lib/build_app.sh#L4
 # for more info
 echo "copying app to avoid trixsy EXDEV issues"
-cp -R $INITIAL_SRC_DIR $APP_DIR
-rm -rf $INITIAL_SRC_DIR
 
 # Install production NPM dependencies
 cd $APP_DIR

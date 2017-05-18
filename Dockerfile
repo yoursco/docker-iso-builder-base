@@ -13,11 +13,9 @@ WORKDIR /home/node
 
 ENV YOURS_HOME "/home/node/"
 ENV APP_DIR "${YOURS_HOME}/www"
-ENV INITIAL_SRC_DIR "${YOURS_HOME}/src"
 
 # Make sure critical directories exist
 RUN mkdir -p $APP_DIR
-RUN mkdir -p $INITIAL_SRC_DIR
 
 ## Add script to clean up deps once we have built our meteor app
 COPY cleanup.sh /usr/bin/cleanup.sh
