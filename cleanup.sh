@@ -4,7 +4,7 @@
 set -e
 
 echo "cleaning up apt"
-apt-get clean -y
-apt-get purge build-essential -y
-apt-get autoremove -y
-rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#apt-get clean -y
+#apt-get purge build-essential -y
+# apt-get autoremove -y
+#rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
