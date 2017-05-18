@@ -17,7 +17,6 @@ ENV INITIAL_SRC_DIR "${YOURS_HOME}/src"
 
 # Make sure critical directories exist
 RUN mkdir -p $APP_DIR
-RUN mkdir -p $SRC_DIR
 RUN mkdir -p $INITIAL_SRC_DIR
 
 ## Add script to clean up deps once we have built our meteor app
