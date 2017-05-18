@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Austin Hollenbaugh <austinh@yours.co>
 
-RUN mkdir -p /home/isobuilder
+RUN mkdir -p /home/node
 
 # Install git, curl, node
 RUN apt-get update && \
@@ -9,9 +9,9 @@ RUN apt-get update && \
 	(curl https://deb.nodesource.com/setup_7.x | bash) && \
 	apt-get install -y nodejs
 
-WORKDIR /home/isobuilder
+WORKDIR /home/node
 
-ENV YOURS_HOME "/home/isobuilder/"
+ENV YOURS_HOME "/home/node/"
 ENV APP_DIR "${YOURS_HOME}/www"
 ENV INITIAL_SRC_DIR "${YOURS_HOME}/src"
 
@@ -37,4 +37,4 @@ ONBUILD ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 # containers being stopped
 # NOTE: It looks like we are leaving some zombie processes when running as PID 1
 # Switch back to this when zombie processes are figured out
-ENTRYPOINT ["node", "--max-old-space-size=2048", "/home/isobuilder/www/index.js"]
+ENTRYPOINT ["node", "--max-old-space-size=2048", "/home/node/www/index.js"]
